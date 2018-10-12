@@ -1,8 +1,10 @@
 import cv2
 import numpy as np
 
-cursor_template = cv2.imread("C:/Users/roopa/Pictures/proj1_cse573/cursor_temp.jpg", 0)
-test_images = cv2.imread("C:/Users/roopa/Pictures/proj1_cse573/task3/pos_10.jpg", 0)
+cursor_template = cv2.imread("cursor_temp.jpg", 0)
+# Compare the template patch with pos and neg images
+test_images = cv2.imread("pos_1.jpg", 0)
+
 
 
 w, h = cursor_template.shape[::-1]
@@ -11,7 +13,7 @@ w, h = cursor_template.shape[::-1]
 cursor_blur = cv2.GaussianBlur(cursor_template, (3, 3), sigmaX=0)
 cursor_laplacian = cv2.Laplacian(cursor_blur, cv2.CV_8U)
 
-# Applying Gaussian blur and laplacian transform for the test images
+# Applying Gaussian blur and laplacian transform for the test image
 image_gaussian_blur = cv2.GaussianBlur(test_images, (5, 5), sigmaX=0)
 image_laplacian = cv2.Laplacian(image_gaussian_blur, cv2.CV_8U)
 
